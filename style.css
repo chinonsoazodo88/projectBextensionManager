@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    font-family:  "Noto Sans", sans-serif;
+}
+
+body{
+    background-color: #ebf4fd;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.genLayout{
+    max-width: 1100px;
+    margin: 2rem auto;
+}
+
+nav{
+    padding: .5rem;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 2px solid #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+body.dark-mode nav > img{
+    color: hsl(200, 60%, 99%);
+}
+
+body.dark-mode nav{
+    background-color: hsl(226, 25%, 17%);
+    border: none;
+}
+
+.mode > button{
+    width: 32px;
+    height: 32px;
+    border-color: #ededed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+body.dark-mode .mode > button , body.dark-mode .tabButtons > button{
+    border: none;
+    background-color: hsl(225, 23%, 24%);
+    color: hsl(200, 60%, 99%);
+}
+
+.nav > button > img{
+    width: 18px;
+}
+
+/* Dark mode styles */
+body.dark-mode{
+    background-color: hsl(227, 75%, 14%);
+    color: #ebf4fd;
+  }
+
+/* styling for extensions */
+
+.extensionTabs{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.extensionTabs > h3{
+    text-transform: capitalize;
+    font-size: 2rem;
+    color: #081140;
+}
+
+body.dark-mode .extensionTabs > h3{
+    color: hsl(200, 60%, 99%);
+}
+
+.tabButtons > button{
+    padding: .3rem .6rem;
+    border-radius: 20px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    text-transform: capitalize;
+    color: #081140;
+    cursor: pointer;
+}
+
+body.dark-mode .btn1:hover , body.dark-mode .btn2:hover , body.dark-mode .btn3:hover{
+    background-color: #c62419;
+}
+
+.btn2:hover , .btn3:hover , .btnRemove:hover{
+    background-color: #c62419;
+    color: #fff;   
+}
+
+.tabButtons > button:first-child{
+    background-color: #c62419;
+    color: #fff;
+}
+
+.extensionWrapper{
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.extensionCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    height: 30vh;border-radius: 20px;
+    border: 2px solid #e3e8f0;
+    padding: 1rem;
+}
+
+body.dark-mode .extensionCard{
+    background-color: hsl(226, 25%, 17%);
+    border: 2px solid hsl(225, 23%, 24%);
+}
+
+.extensionCardTop{
+    display: flex;
+    /* align-items: center; */
+    gap: 1rem;
+}
+
+.cardContent > h2{
+    color: #081140;
+    font-size: 1rem;
+}
+
+body.dark-mode .cardContent > h2{
+    color: hsl(200, 60%, 99%);
+}
+
+.cardContent > p{
+    font-size: 16px;
+}
+
+body.dark-mode .cardContent > p{
+    color: hsl(0, 0%, 78%);
+}
+
+.cardToggler{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardToggler > button{
+    padding: .3rem .6rem;
+    border-radius: 20px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    text-transform: capitalize;
+    color: #081140;
+    cursor: pointer;
+}
+
+body.dak-mode .cardToggler > button , body.dak-mode .btnRemove{
+    background-color: hsl(226, 25%, 17%);
+    border: 2px solid hsl(225, 23%, 24%);
+    color: hsl(200, 60%, 99%);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 12px;
+    margin-left: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 15px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 11px;
+    width: 11px;
+    left: 2px;
+    /* bottom: 2px; */
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #c62419;
+}
+
+input:checked + .slider:before {
+    transform: translateX(14px);
+}
+
+@media(min-width: 260px) and (max-width: 420px){
+    .genLayout{
+        max-width: 330px;
+    }
+
+    .extensionTabs{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .tabButtons > button{
+        padding: 1rem 2.2rem;
+        border-radius: 25px;
+    }
+
+    .extensionWrapper{
+        display: flex;
+        flex-direction: column;
+    }
+}
