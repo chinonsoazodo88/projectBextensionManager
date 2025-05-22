@@ -132,6 +132,67 @@ extensions.map(function(item) {
 //     return createCard(item);
 // })
 
+// Render a single card
+function createCard(item) {
+    const card = document.createElement("div");
+    card.classList.add("extensionCard");
+
+    card.innerHTML = `
+        <div class="extensionCardTop">
+            <img src="${item.logo}" alt="${item.name}">
+            <div class="cardContent">
+                <h2>${item.name}</h2>
+                <p>${item.description}</p>
+            </div>
+        </div>
+        <div class="cardToggler">
+            <button class="btnRemove">Remove</button>
+            <label class="switch">
+                <input type="checkbox" ${item.isActive ? "checked" : ""}>
+                <span class="slider"></span>
+            </label>
+        </div>
+    `;
+
+    Wrapper.appendChild(card);
+}
+
+
+// Display a filtered list of cards
+function renderCards(list) {
+    Wrapper.innerHTML = "";
+    list.forEach(createCard);
+}
+
+// Button active state
+function setActive(button) {
+    [buttonAll, buttonActive, buttonInactive].forEach(btn => btn.classList.remove("activeToggle"));
+    button.classList.add("activeToggle");
+}
+
+// Initial: Show all
+renderCards(extensions);
+
+
+// Event listeners
+buttonAll.addEventListener("click", () => {
+    renderCards(extensions);
+    setActive(buttonAll);
+});
+
+buttonActive.addEventListener("click", () => {
+    const activeCards = extensions.filter(ext => ext.isActive).slice(0, 8);
+    renderCards(activeCards);
+    setActive(buttonActive);
+});
+
+buttonInactive.addEventListener("click", () => {
+    const inactiveCards = extensions.filter(ext => !ext.isActive).slice(-4);
+    renderCards(inactiveCards);
+    setActive(buttonInactive);
+});
+
+
 // Check if dark mode is already set in localStorage
 if (localStorage.getItem('darkMode') === 'enabled') {
   document.body.classList.add('dark-mode');
